@@ -2,8 +2,7 @@
   "name": "encrypt-module",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "index.js",
   "author": "",
   "license": "ISC",
   "dependencies": {
