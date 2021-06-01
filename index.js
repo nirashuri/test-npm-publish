@@ -37,7 +37,7 @@ const encryptKey = (key, publicKey) => {
 /**
  * Encrypt card data.
  *
- * @param {string} card_no card number
+ * @param {string} cardNumber card number
  *
  * @param {string} cvv cvv number behide card
  *
@@ -51,9 +51,9 @@ const encryptKey = (key, publicKey) => {
  *
  *
  */
-const encrypt = (card_no, cvv, publicKeyPath) => {
+const encrypt = (cardNumber, cvv, publicKeyPath) => {
   const [aesKey, encryptedCardData] = encryptCardData({
-    card_no,
+    card: cardNumber,
     cvv,
   });
   const publicKey = fs.readFileSync(publicKeyPath);
