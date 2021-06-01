@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "",
   "license": "ISC",
+  "scripts": {
+    "test": "node index.js"
+  },
   "dependencies": {
     "crypto-js": "^4.0.0",
     "node-rsa": "^1.1.1"
