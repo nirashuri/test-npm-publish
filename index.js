@@ -1,6 +1,6 @@
 const CryptoJS = require("crypto-js");
 const NodeRSA = require("node-rsa");
-const fs = require('fs');
+const fs = require("fs");
 
 const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
 const MessageKeyDelimiter = ":::";
@@ -38,8 +38,8 @@ const encryptKey = (key, publicKey) => {
  * Encrypt card data.
  *
  * @param {string} card_no card number
- * 
- * @param {string} cvv cvv number behide card 
+ *
+ * @param {string} cvv cvv number behide card
  *
  * @param {string} publicKeyPath path to public key file
  *
@@ -47,19 +47,16 @@ const encryptKey = (key, publicKey) => {
  *
  * @example
  *
- *     encrypt({
- *       cardNo: "4242420000000006",
- *       cvv: "123"
- *     },
- *     `-----BEGIN PUBLIC KEY----- ... -----END PUBLIC KEY-----`)
+ *     encrypt("4242420000000006", "123", "./public_key.pub.pem")
+ *
  *
  */
 const encrypt = (card_no, cvv, publicKeyPath) => {
   const [aesKey, encryptedCardData] = encryptCardData({
     card_no,
-    cvv
+    cvv,
   });
-  const publicKey = fs.readFileSync(publicKeyPath)
+  const publicKey = fs.readFileSync(publicKeyPath);
   const encryptedKey = encryptKey(aesKey, publicKey);
   const payload = encryptedKey + MessageKeyDelimiter + encryptedCardData;
   return payload;
